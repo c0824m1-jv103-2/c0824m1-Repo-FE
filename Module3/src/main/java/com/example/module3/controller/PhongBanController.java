@@ -29,7 +29,7 @@ public class PhongBanController extends HttpServlet {
             action = "";
         }
         switch (action) {
-            case "PhongBan":
+            default:
                 phongBan(req, resp);
                 break;
         }

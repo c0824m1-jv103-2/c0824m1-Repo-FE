@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="sidebar">
-    <img src="https://via.placeholder.com/100" alt="Welcome">
+    <img src="https://media.istockphoto.com/id/1283536918/vi/vec-to/ch%C3%A0o-m%E1%BB%ABng-kh%C3%A1i-ni%E1%BB%87m-ph%E1%BA%B3ng-vector-k%E1%BA%BB-th%C3%B9-trang-web-nh%E1%BB%AFng-ng%C6%B0%E1%BB%9Di-nh%E1%BB%8F-b%C3%A9-h%E1%BA%A1nh-ph%C3%BAc-%C4%91ang-%E1%BB%9F-g%E1%BA%A7n.jpg?s=612x612&w=0&k=20&c=oHphbJe9UWlI4O3Up-HzJ8Mc6Yy6Bg8bYu1BqlUk59E=" alt="Welcome">
     <form action="/phongban?action=searchPhongBan" method="post">
         <select name="tenPhongBan" id="tenPhongBan">
             <option value="" selected>-- Tổng danh sách --</option>
