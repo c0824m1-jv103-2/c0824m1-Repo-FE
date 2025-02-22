@@ -21,7 +21,7 @@
         <button type="submit">Chọn</button>
     </form>
     <button>Thêm Mới Nhân Viên</button>
-    <button>Khen thưởng & Phạt</button>
+    <button onclick="window.location.href='/phongban?action=khenThuong';">Khen thưởng & Phạt</button>
     <button>Dự án</button>
 </div>
 <div class="content">
