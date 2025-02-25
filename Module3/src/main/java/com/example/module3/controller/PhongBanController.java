@@ -85,7 +85,7 @@ public class PhongBanController extends HttpServlet {
         float SoTien = Float.parseFloat(req.getParameter("SoTien"));
         String LyDo = req.getParameter("LyDo");
         LocalDate Ngay = LocalDate.parse(req.getParameter("Ngay"));
-        KhenThuong khenThuong = new KhenThuong(null, Loai, SoTien, LyDo, Ngay);
+        KhenThuong khenThuong = new KhenThuong(Ma, Loai, SoTien, LyDo, Ngay);
         khenThuongService.save(khenThuong);
         resp.sendRedirect("/phongban?action=khenThuong");
     }

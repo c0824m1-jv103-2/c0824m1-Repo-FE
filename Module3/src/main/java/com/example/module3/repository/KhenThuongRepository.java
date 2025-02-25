@@ -21,7 +21,7 @@ public class KhenThuongRepository implements IKhenThuongRepository {
             Statement statement = BaseRepository.getConnection().createStatement();
             ResultSet resultSet = statement.executeQuery("select * from khenthuongphat");
             while (resultSet.next()) {
-                int MaNV = resultSet.getInt("MaNV");
+                int MaNV = resultSet.getInt("Ma");
                 String Loai = resultSet.getString("Loai");
                 float SoTien = resultSet.getFloat("SoTien");
                 String LyDo = resultSet.getString("LyDo");
@@ -47,8 +47,16 @@ public class KhenThuongRepository implements IKhenThuongRepository {
 
     @Override
     public void save(KhenThuong khenThuong) {
-        List<KhenThuong> khenThuongs = new ArrayList<>();
-        khenThuong.setMa(khenThuongs.get(khenThuongs.size() - 1).getMa() + 1);
-        khenThuongs.add(khenThuong);
+        try {
+            PreparedStatement statement = BaseRepository.getConnection().prepareStatement("insert into khenthuongphat(Ma, Loai, SoTien,LyDo,Ngay) values (?,?,?,?,?)");
+            statement.setInt(1,khenThuong.getMa());
+            statement.setString(2,khenThuong.getLoai());
+            statement.setFloat(3,khenThuong.getSoTien());
+            statement.setString(4,khenThuong.getLyDo());
+            statement.setDate(5,java.sql.Date.valueOf(khenThuong.getNgay()));
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
