@@ -23,7 +23,7 @@
             </select>
             <button id="applyFilter" onclick="filterTable()">Chọn</button>
         </div>
-        <button onclick="window.location.href='/phongban?action=createKhenThuong';">➕</button>
+        <button onclick="window.location.href='/phongban?action=createKhenThuong'">➕</button>
     </div>
 
     <table class="custom-table custom-table-bordered">

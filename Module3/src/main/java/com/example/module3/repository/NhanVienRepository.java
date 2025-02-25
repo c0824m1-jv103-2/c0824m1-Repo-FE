@@ -15,7 +15,8 @@ public class NhanVienRepository implements INhanVienRepository {
     @Override
     public List<NhanVien> findAllNhanVien(String TenPhongBan) {
         List<NhanVien> nhanViens = new ArrayList<NhanVien>();
-        try (Connection connection = BaseRepository.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(SELECT_NhanVien);) {
+        try (Connection connection = BaseRepository.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(SELECT_NhanVien);)
+        {
             preparedStatement.setString(1, "%" + TenPhongBan + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {

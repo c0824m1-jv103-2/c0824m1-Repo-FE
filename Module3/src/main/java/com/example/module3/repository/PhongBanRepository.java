@@ -17,9 +17,9 @@ public class PhongBanRepository implements IPhongBanRepository {
     public List<PhongBan> findAll() {
         Connection connection = BaseRepository.getConnection();
         List<PhongBan> phongBans = new ArrayList<PhongBan>();
-        try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(SELECT_PHONGBAN);
+        try(Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(SELECT_PHONGBAN))
+        {
             while (resultSet.next()) {
                 int MaPhongBan = resultSet.getInt("MaPhongBan");
                 String TenPhongBan = resultSet.getString("TenPhongBan");
