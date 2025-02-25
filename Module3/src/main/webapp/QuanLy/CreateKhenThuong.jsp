@@ -8,6 +8,40 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(to right, #1a237e, #3d5afe);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .form-control, .form-select, textarea {
+            background: rgba(255, 255, 255, 0.8);
+            color: black;
+            border: none;
+        }
+        .form-control:focus, .form-select:focus, textarea:focus {
+            background: white;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+        }
+        .btn-primary {
+            background-color: #ffeb3b;
+            color: black;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #fdd835;
+        }
+    </style>
 </head>
 <body>
 <div class="container mt-4">
