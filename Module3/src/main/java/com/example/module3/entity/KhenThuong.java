@@ -1,3 +1,4 @@
+
 package com.example.module3.entity;
 
 import java.time.LocalDate;
@@ -60,3 +61,4 @@ public class KhenThuong {
         Ngay = ngay;
     }
 }
+
