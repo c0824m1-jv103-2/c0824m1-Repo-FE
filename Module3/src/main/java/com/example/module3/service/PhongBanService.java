@@ -14,4 +14,8 @@ public class PhongBanService implements IPhongBanService {
     public List<PhongBan> getPhongBanList() {
         return phongBanRepository.findAll();
     }
+    @Override
+    public PhongBan getPhongBan (String TenPhongBan) {
+        return phongBanRepository.findByTenPhongBan(TenPhongBan);
+    }
 }

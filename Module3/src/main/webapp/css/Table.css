@@ -1,16 +1,16 @@
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 18px;
+    margin: 10px 0;
+    font-size: 12px;
     text-align: left;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
     overflow: hidden;
 }
 
 th, td {
-    padding: 12px 15px;
+    padding: 8px 10px;
     border-bottom: 1px solid #ddd;
 }
 
@@ -19,6 +19,7 @@ th {
     color: white;
     font-weight: bold;
     text-transform: uppercase;
+    font-size: 13px;
 }
 
 tr:nth-child(even) {
@@ -27,11 +28,12 @@ tr:nth-child(even) {
 
 tr:hover {
     background-color: #f1f1f1;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 td {
     color: #333;
+    white-space: nowrap;
 }
 
 table thead {
@@ -39,4 +41,11 @@ table thead {
     top: 0;
     background: #007BFF;
     z-index: 10;
+}
+
+
+button {
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 3px;
 }
