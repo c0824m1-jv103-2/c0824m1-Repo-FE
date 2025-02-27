@@ -45,7 +45,6 @@
                 <td>${item.soTien}</td>
                 <td>${item.lyDo}</td>
                 <td>${item.ngay}</td>
-                <!-- Button trigger modal -->
                 <td>
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="##delete${item.ma}">
                         Xóa

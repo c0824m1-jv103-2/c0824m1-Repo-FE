@@ -49,7 +49,14 @@
     <form  method="post">
         <div class="mb-3">
             <label class="form-label">Mã Nhân Viên:</label>
-            <input type="text" class="form-control" name="Ma" required>
+            <select class="form-select" name="tenPhongBan" id="tenPhongBan" required>
+                <option value="" selected>-- Mã nhân viên --</option>
+                <c:forEach var="item" items="${PhongBan}">
+                    <option value="${item.getTenPhongBan()}">
+                            ${item.getTenPhongBan()}
+                    </option>
+                </c:forEach>
+            </select>
         </div>
 
         <div class="mb-3">
