@@ -13,6 +13,10 @@ public class PhongBan {
         this.TenPhongBan = TenPhongBan;
     }
 
+    public PhongBan(String TenPhongBan) {
+        this.TenPhongBan = TenPhongBan;
+    }
+
     public int getMaPhongBan() {
         return MaPhongBan;
     }

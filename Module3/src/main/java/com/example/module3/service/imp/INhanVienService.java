@@ -6,4 +6,12 @@ import java.util.List;
 
 public interface INhanVienService {
     List<NhanVien> getNhanVien(String TenPhongBan);
+
+    void deleteNhanVien(int MaNV);
+
+    void createNhanVien(NhanVien NhanVien);
+
+    NhanVien updateNhanVien(int MaNV);
+
+//    void update(NhanVien NhanVien);
 }

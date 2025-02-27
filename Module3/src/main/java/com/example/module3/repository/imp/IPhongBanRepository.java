@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface IPhongBanRepository {
     List<PhongBan> findAll();
+
+    PhongBan findByTenPhongBan(String TenPhongBan);
 }

@@ -6,6 +6,7 @@ import com.example.module3.service.NhanVienService;
 import com.example.module3.service.PhongBanService;
 import com.example.module3.service.imp.INhanVienService;
 import com.example.module3.service.imp.IPhongBanService;
+import com.mysql.cj.x.protobuf.MysqlxCrud;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +15,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "PhongBanController", urlPatterns = "/phongban")
@@ -29,9 +33,43 @@ public class PhongBanController extends HttpServlet {
             action = "";
         }
         switch (action) {
+            case "UpdateNhanVien":
+                updateNhanVien(req, resp);
+                break;
+            case "createNhanVien":
+                createNhanVien(req, resp);
+                break;
             default:
                 phongBan(req, resp);
                 break;
+        }
+    }
+
+    private void updateNhanVien(HttpServletRequest req, HttpServletResponse resp) {
+        List<PhongBan> phongBanList = phongBanService.getPhongBanList();
+        req.setAttribute("PhongBanList", phongBanList);
+        int MaNV = Integer.parseInt(req.getParameter("MaNV"));
+        String TenPhongBan = req.getParameter("tenphongban");
+        NhanVien nhanVien = nhanVienService.updateNhanVien(MaNV);
+        PhongBan phongBan = phongBanService.getPhongBan(TenPhongBan);
+        req.setAttribute("phongBan", phongBan);
+        req.setAttribute("nhanvien", nhanVien);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("QuanLy/UpdateNhanVien.jsp");
+        try {
+            dispatcher.forward(req, resp);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void createNhanVien(HttpServletRequest req, HttpServletResponse resp) {
+        List<PhongBan> phongBanList = phongBanService.getPhongBanList();
+        req.setAttribute("nhanVienList", phongBanList);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("QuanLy/createNhanVien.jsp");
+        try {
+            dispatcher.forward(req, resp);
+        } catch (ServletException | IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -46,7 +84,43 @@ public class PhongBanController extends HttpServlet {
             case "searchPhongBan":
                 searchPhongBan(req, resp);
                 break;
+            case "deleteNhanVien":
+                Delete(req, resp);
+                break;
+            case "createNhanVien2":
+                CreateNhanVien(req, resp);
+                break;
+//            case "updateNhanVien":
+//                update(req, resp);
+//                break;
+        }
+    }
 
+    private void CreateNhanVien(HttpServletRequest req, HttpServletResponse resp) {
+        String HoTen = req.getParameter("HoTen");
+        LocalDate NgaySinh = LocalDate.parse(req.getParameter("NgaySinh"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String GioiTinh = req.getParameter("GioiTinh");
+        String ChucVu = req.getParameter("ChucVu");
+        String Email = req.getParameter("Email");
+        String CCCD = req.getParameter("CCCD");
+        String TenPhongBan = req.getParameter("TenPhongBan");
+        PhongBan phongBan = phongBanService.getPhongBan(TenPhongBan);
+        NhanVien nhanVien = new NhanVien(HoTen, NgaySinh, GioiTinh, ChucVu, Email, CCCD, phongBan);
+        nhanVienService.createNhanVien(nhanVien);
+        try {
+            resp.sendRedirect("/phongban");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void Delete(HttpServletRequest req, HttpServletResponse resp) {
+        int id = Integer.parseInt(req.getParameter("id"));
+        nhanVienService.deleteNhanVien(id);
+        try {
+            resp.sendRedirect("/phongban");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -81,4 +155,23 @@ public class PhongBanController extends HttpServlet {
             e.printStackTrace();
         }
     }
+
+//    private void update(HttpServletRequest req, HttpServletResponse resp) {
+//        String HoTen = req.getParameter("HoTen");
+//        LocalDate NgaySinh = LocalDate.parse(req.getParameter("NgaySinh"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+//        String GioiTinh = req.getParameter("GioiTinh");
+//        String ChucVu = req.getParameter("ChucVu");
+//        String Email = req.getParameter("Email");
+//        String CCCD = req.getParameter("CCCD");
+//        String TenPhongBan = req.getParameter("TenPhongBan");
+//        PhongBan phongBan = phongBanService.getPhongBan(TenPhongBan);
+//        NhanVien nhanVien = new NhanVien(HoTen, NgaySinh, GioiTinh, ChucVu, Email, CCCD, phongBan);
+//        nhanVienService.createNhanVien(nhanVien);
+//        try {
+//            resp.sendRedirect("/phongban");
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 }
+
