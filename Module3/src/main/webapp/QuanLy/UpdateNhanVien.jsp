@@ -16,6 +16,7 @@
 <div class="container">
     <h2>Tạo mới nhân viên</h2>
     <form action="/phongban?action=updateNhanVien" method="post">
+        <input type="hidden" name="MaNV" value="${nhanvien.getMaNV()}">
         <div class="form-group">
             <label for="HoTen">Họ và tên</label>
             <input type="text" class="form-control" id="HoTen" name="HoTen" value="${nhanvien.getHoTen()}"
@@ -29,10 +30,10 @@
         <div class="form-group">
             <label>Giới tính</label>
             <select name="GioiTinh">
-                <option value="${nhanvien.getMaNV()}">${nhanvien.getGioiTinh()}</option>
-                <c:forEach items="${nhanVien}" var="nv">
-                    <option value="${nv.getGioiTinh()}">${nv.getGioiTinh()}</option>
-                </c:forEach>
+                <option value="${nhanvien.getGioiTinh()}">${nhanvien.getGioiTinh()}</option>
+                <option value="Nam">Nam</option>
+                <option value="Nam">Nu</option>
+                <option value="Nam">Khac</option>
             </select>
         </div>
         <div class="form-group">
@@ -53,7 +54,7 @@
             <select name="TenPhongBan">
                 <option value="${phongBan.getMaPhongBan()}">${phongBan.getTenPhongBan()}</option>
                 <c:forEach items="${PhongBanList}" var="PhongBanList">
-                    <option value="${PhongBanList.getMaPhongBan()}">${PhongBanList.getTenPhongBan()}</option>
+                    <option value="${PhongBanList.getTenPhongBan()}">${PhongBanList.getTenPhongBan()}</option>
                 </c:forEach>
             </select>
         </div>

@@ -1,9 +1,12 @@
 package com.example.module3.controller;
 
+import com.example.module3.entity.KhenThuong;
 import com.example.module3.entity.NhanVien;
 import com.example.module3.entity.PhongBan;
+import com.example.module3.service.KhenThuongService;
 import com.example.module3.service.NhanVienService;
 import com.example.module3.service.PhongBanService;
+import com.example.module3.service.imp.IKhenThuongService;
 import com.example.module3.service.imp.INhanVienService;
 import com.example.module3.service.imp.IPhongBanService;
 import com.mysql.cj.x.protobuf.MysqlxCrud;
@@ -24,6 +27,7 @@ import java.util.List;
 public class PhongBanController extends HttpServlet {
     private final IPhongBanService phongBanService = new PhongBanService();
     private final INhanVienService nhanVienService = new NhanVienService();
+    private final IKhenThuongService khenThuongService = new KhenThuongService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -33,6 +37,15 @@ public class PhongBanController extends HttpServlet {
             action = "";
         }
         switch (action) {
+            case "khenThuong":
+                khenThuongList(req, resp);
+                break;
+            case "deleteKhenThuong":
+                deleteKhenThuong(req, resp);
+                break;
+            case "createKhenThuong":
+                req.getRequestDispatcher("/QuanLy/CreateKhenThuong.jsp").forward(req, resp);
+                break;
             case "UpdateNhanVien":
                 updateNhanVien(req, resp);
                 break;
@@ -43,6 +56,19 @@ public class PhongBanController extends HttpServlet {
                 phongBan(req, resp);
                 break;
         }
+    }
+
+    private void deleteKhenThuong(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int Ma = Integer.parseInt(req.getParameter("id"));
+        khenThuongService.remove(Ma);
+        khenThuongList(req, resp);
+    }
+
+
+    private void khenThuongList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<KhenThuong> khenThuongs = khenThuongService.getKhenThuongList();
+        req.setAttribute("khenThuongs", khenThuongs);
+        req.getRequestDispatcher("/QuanLy/KhenThuong.jsp").forward(req, resp);
     }
 
     private void updateNhanVien(HttpServletRequest req, HttpServletResponse resp) {
@@ -81,6 +107,9 @@ public class PhongBanController extends HttpServlet {
             action = "";
         }
         switch (action) {
+            case "createKhenThuong":
+                createKhenThuong(req, resp);
+                break;
             case "searchPhongBan":
                 searchPhongBan(req, resp);
                 break;
@@ -90,10 +119,21 @@ public class PhongBanController extends HttpServlet {
             case "createNhanVien2":
                 CreateNhanVien(req, resp);
                 break;
-//            case "updateNhanVien":
-//                update(req, resp);
-//                break;
+            case "updateNhanVien":
+                update(req, resp);
+                break;
         }
+    }
+
+    private void createKhenThuong(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        int Ma = Integer.parseInt(req.getParameter("Ma"));
+        String Loai = req.getParameter("Loai");
+        float SoTien = Float.parseFloat(req.getParameter("SoTien"));
+        String LyDo = req.getParameter("LyDo");
+        LocalDate Ngay = LocalDate.parse(req.getParameter("Ngay"));
+        KhenThuong khenThuong = new KhenThuong(Ma, Loai, SoTien, LyDo, Ngay);
+        khenThuongService.save(khenThuong);
+        resp.sendRedirect("/phongban?action=khenThuong");
     }
 
     private void CreateNhanVien(HttpServletRequest req, HttpServletResponse resp) {
@@ -156,22 +196,23 @@ public class PhongBanController extends HttpServlet {
         }
     }
 
-//    private void update(HttpServletRequest req, HttpServletResponse resp) {
-//        String HoTen = req.getParameter("HoTen");
-//        LocalDate NgaySinh = LocalDate.parse(req.getParameter("NgaySinh"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-//        String GioiTinh = req.getParameter("GioiTinh");
-//        String ChucVu = req.getParameter("ChucVu");
-//        String Email = req.getParameter("Email");
-//        String CCCD = req.getParameter("CCCD");
-//        String TenPhongBan = req.getParameter("TenPhongBan");
-//        PhongBan phongBan = phongBanService.getPhongBan(TenPhongBan);
-//        NhanVien nhanVien = new NhanVien(HoTen, NgaySinh, GioiTinh, ChucVu, Email, CCCD, phongBan);
-//        nhanVienService.createNhanVien(nhanVien);
-//        try {
-//            resp.sendRedirect("/phongban");
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+    private void update(HttpServletRequest req, HttpServletResponse resp) {
+        int MaNV = Integer.parseInt(req.getParameter("MaNV"));
+        String HoTen = req.getParameter("HoTen");
+        LocalDate NgaySinh = LocalDate.parse(req.getParameter("NgaySinh"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String GioiTinh = req.getParameter("GioiTinh");
+        String ChucVu = req.getParameter("ChucVu");
+        String Email = req.getParameter("Email");
+        String CCCD = req.getParameter("CCCD");
+        String TenPhongBan = req.getParameter("TenPhongBan");
+        PhongBan phongBan = phongBanService.getPhongBan(TenPhongBan);
+        NhanVien nhanVien = new NhanVien(MaNV, HoTen, NgaySinh, GioiTinh, ChucVu, Email, CCCD, phongBan);
+        nhanVienService.update(nhanVien);
+        try {
+            resp.sendRedirect("/phongban");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
 

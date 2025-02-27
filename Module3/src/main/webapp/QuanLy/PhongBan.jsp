@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="/css/Home.css">
     <link rel="stylesheet" href="/css/Delete.css">
 </head>
+<style>
+    a {
+        text-decoration: none;
+        color: white;
+    }
+</style>
 <body>
 <div class="sidebar">
     <img src="https://media.istockphoto.com/id/1283536918/vi/vec-to/ch%C3%A0o-m%E1%BB%ABng-kh%C3%A1i-ni%E1%BB%87m-ph%E1%BA%B3ng-vector-k%E1%BA%BB-th%C3%B9-trang-web-nh%E1%BB%AFng-ng%C6%B0%E1%BB%9Di-nh%E1%BB%8F-b%C3%A9-h%E1%BA%A1nh-ph%C3%BAc-%C4%91ang-%E1%BB%9F-g%E1%BA%A7n.jpg?s=612x612&w=0&k=20&c=oHphbJe9UWlI4O3Up-HzJ8Mc6Yy6Bg8bYu1BqlUk59E="
@@ -25,7 +31,7 @@
     <button class="btn-add"><a href="/phongban?action=createNhanVien">Thêm Mới Nhân Viên</a></button>
     <form action="/phongban?action=createNhanVien" method="post">
     </form>
-    <button>Khen thưởng & Phạt</button>
+    <button onclick="window.location.href='/phongban?action=khenThuong'">Khen thưởng & Phạt</button>
     <button>Dự án</button>
 </div>
 <div class="content">

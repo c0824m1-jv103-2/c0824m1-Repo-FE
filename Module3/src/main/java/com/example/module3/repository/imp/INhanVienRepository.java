@@ -13,5 +13,5 @@ public interface INhanVienRepository {
 
     NhanVien updateNhanVien(int MaNV);
 
-//    void update(NhanVien nhanVien);
+    void update(NhanVien nhanVien);
 }

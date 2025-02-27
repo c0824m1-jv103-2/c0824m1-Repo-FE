@@ -13,5 +13,5 @@ public interface INhanVienService {
 
     NhanVien updateNhanVien(int MaNV);
 
-//    void update(NhanVien NhanVien);
+    void update(NhanVien NhanVien);
 }

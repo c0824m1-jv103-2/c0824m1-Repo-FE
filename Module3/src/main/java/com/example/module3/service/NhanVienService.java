@@ -30,8 +30,8 @@ public class NhanVienService implements INhanVienService {
         return nhanVienRepository.updateNhanVien(MaNV);
     }
 
-//    @Override
-//    public void update(NhanVien NhanVien) {
-//        nhanVienRepository.update(NhanVien);
-//    }
+    @Override
+    public void update(NhanVien NhanVien) {
+        nhanVienRepository.update(NhanVien);
+    }
 }

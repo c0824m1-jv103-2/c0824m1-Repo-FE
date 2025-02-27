@@ -15,7 +15,7 @@ public class NhanVienRepository implements INhanVienRepository {
     private final String DELETE_NhanVien = "DELETE FROM nhanvien WHERE MaNV = ?";
     private final String INSERT_NhanVien = "INSERT INTO NhanVien (HoTen, NgaySinh, GioiTinh, ChucVu, Email, CCCD, MaPhongBan) VALUES \n" +
             "(?, ?, ?, ?, ?, ?, ?)";
-    private final String UPDATE_NhanVien = "UPDATE NhanVien SET HoTen = ?, NgaySinh = ?, GioiTinh= ?, ChucVu=?, Email=?, CCCD=?, MaPhongBan=?";
+    private final String UPDATE_NhanVien = "UPDATE NhanVien SET HoTen = ?, NgaySinh = ?, GioiTinh= ?, ChucVu=?, Email=?, CCCD=?, MaPhongBan=? where MaNV = ?";
     private final String SELECT_NHANVIEN = "SELECT * FROM nhanvien WHERE MaNV = ?";
 
     @Override
@@ -75,24 +75,25 @@ public class NhanVienRepository implements INhanVienRepository {
         }
     }
 
-//    @Override
-//    public void update(NhanVien nhanVien) {
-//        try (
-//                Connection connection = BaseRepository.getConnection();
-//                PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_NhanVien);
-//        ) {
-//            preparedStatement.setString(1, nhanVien.getHoTen());
-//            preparedStatement.setDate(2, java.sql.Date.valueOf(nhanVien.getNgaySinh()));
-//            preparedStatement.setString(3, nhanVien.getGioiTinh());
-//            preparedStatement.setString(4, nhanVien.getChucVu());
-//            preparedStatement.setString(5, nhanVien.getEmail());
-//            preparedStatement.setString(6, nhanVien.getCCCD());
-//            preparedStatement.setInt(7, nhanVien.getPhongBan().getMaPhongBan());
-//            preparedStatement.executeUpdate();
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+    @Override
+    public void update(NhanVien nhanVien) {
+        try (
+                Connection connection = BaseRepository.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_NhanVien);
+        ) {
+            preparedStatement.setString(1, nhanVien.getHoTen());
+            preparedStatement.setDate(2, java.sql.Date.valueOf(nhanVien.getNgaySinh()));
+            preparedStatement.setString(3, nhanVien.getGioiTinh());
+            preparedStatement.setString(4, nhanVien.getChucVu());
+            preparedStatement.setString(5, nhanVien.getEmail());
+            preparedStatement.setString(6, nhanVien.getCCCD());
+            preparedStatement.setInt(7, nhanVien.getPhongBan().getMaPhongBan());
+            preparedStatement.setInt(8, nhanVien.getMaNV());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
     @Override
     public NhanVien updateNhanVien(int MaNV) {
         try (
