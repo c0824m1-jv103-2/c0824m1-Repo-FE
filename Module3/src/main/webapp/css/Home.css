@@ -3,8 +3,6 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
-    text-decoration: none;
-    color: white;
 }
 
 body {
@@ -99,32 +97,6 @@ h2 {
     margin-top: 10px;
     width: 100%;
 }
-
-/*.btn-add {*/
-/*    text-decoration: none; !* Bỏ gạch chân *!*/
-/*    color: white; !* Màu chữ trắng *!*/
-/*    background-color: blue; !* Màu nền xanh *!*/
-/*    padding: 10px 20px;*/
-/*    border: none;*/
-/*    border-radius: 5px;*/
-/*    cursor: pointer;*/
-/*    font-size: 16px;*/
-/*    display: inline-block;*/
-/*}*/
-
-/*.btn-add a {*/
-/*    text-decoration: none; !* Bỏ gạch chân cho thẻ <a> *!*/
-/*    color: white; !* Màu chữ trắng *!*/
-/*    display: block; !* Để thẻ <a> chiếm toàn bộ diện tích nút *!*/
-/*}*/
-
-/*.btn-add:hover {*/
-/*    background-color: darkblue; !* Đổi màu khi hover *!*/
-/*}*/
-
-
-
-
 
 
 
