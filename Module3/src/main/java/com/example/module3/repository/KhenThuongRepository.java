@@ -59,4 +59,25 @@ public class KhenThuongRepository implements IKhenThuongRepository {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public List<KhenThuong> findByLoai(String loai) {
+        List<KhenThuong> khenThuongs = new ArrayList<>();
+        try (PreparedStatement statement = BaseRepository.getConnection().prepareStatement("select  * from khenthuongphat where loai = ?");)
+        {
+            statement.setString(1, loai);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int MaNV = resultSet.getInt("Ma");
+                String Loai = resultSet.getString("Loai");
+                float SoTien = resultSet.getFloat("SoTien");
+                String LyDo = resultSet.getString("LyDo");
+                LocalDate Ngay = resultSet.getDate("Ngay").toLocalDate();
+                khenThuongs.add(new KhenThuong(MaNV, Loai, SoTien, LyDo, Ngay));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return khenThuongs;
+    }
 }

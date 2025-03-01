@@ -14,4 +14,6 @@ public interface INhanVienService {
     NhanVien updateNhanVien(int MaNV);
 
     void update(NhanVien NhanVien);
+
+    List<NhanVien> findAllMaNV();
 }

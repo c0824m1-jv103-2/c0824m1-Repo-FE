@@ -23,4 +23,9 @@ public class KhenThuongService implements IKhenThuongService {
     public void save(KhenThuong khenThuong) {
         khenThuongRepository.save(khenThuong);
     }
+
+    @Override
+    public List<KhenThuong> findByLoai(String loai) {
+        return khenThuongRepository.findByLoai(loai);
+    }
 }

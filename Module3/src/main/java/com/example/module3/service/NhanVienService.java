@@ -34,4 +34,9 @@ public class NhanVienService implements INhanVienService {
     public void update(NhanVien NhanVien) {
         nhanVienRepository.update(NhanVien);
     }
+
+    @Override
+    public List<NhanVien> findAllMaNV() {
+        return nhanVienRepository.findAllMaNV();
+    }
 }

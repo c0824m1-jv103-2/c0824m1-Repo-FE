@@ -57,6 +57,7 @@ public class NhanVienRepository implements INhanVienRepository {
         }
     }
 
+    @Override
     public void createNhanVien(NhanVien nhanVien) {
         try (
                 Connection connection = BaseRepository.getConnection();
@@ -94,6 +95,22 @@ public class NhanVienRepository implements INhanVienRepository {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public List<NhanVien> findAllMaNV() {
+        List<NhanVien> nhanViens = new ArrayList<>();
+        try(Statement statement = BaseRepository.getConnection().createStatement();
+            ResultSet resultSet = statement.executeQuery("select * from nhanvien");) {
+            while (resultSet.next()) {
+                int MaNV = resultSet.getInt("MaNV");
+                nhanViens.add(new NhanVien(MaNV));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return nhanViens;
+    }
+
     @Override
     public NhanVien updateNhanVien(int MaNV) {
         try (
@@ -111,7 +128,7 @@ public class NhanVienRepository implements INhanVienRepository {
                 String Email = resultSet.getString("Email");
                 String CCCD = resultSet.getString("CCCD");
                 int MaPhongBan = resultSet.getInt("MaPhongBan");
-                NhanVien nhanVien = new NhanVien(MaNV, HoTen, NgaySinh, GioiTinh, ChucVu, Email, CCCD);
+                NhanVien nhanVien = new NhanVien(MaNhanVien, HoTen, NgaySinh, GioiTinh, ChucVu, Email, CCCD);
                 return nhanVien;
             }
         } catch (SQLException e) {

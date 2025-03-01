@@ -15,6 +15,10 @@ public class NhanVien {
     private String CCCD;
     private PhongBan phongBan;
 
+    public NhanVien(int maNV) {
+        this.MaNV = maNV;
+    }
+
     public NhanVien(int MaNV, String HoTen, LocalDate NgaySinh, String GioiTinh, String ChucVu, String Email, String CCCD, PhongBan phongBan) {
         this.MaNV = MaNV;
         this.HoTen = HoTen;
