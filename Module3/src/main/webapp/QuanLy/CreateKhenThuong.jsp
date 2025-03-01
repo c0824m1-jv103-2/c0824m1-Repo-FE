@@ -46,19 +46,18 @@
 <body>
 <div class="container mt-4">
     <h2 class="text-center">Nhập Thông Tin Khen Thưởng / Phạt</h2>
-    <form  method="post">
+    <form method="post">
         <div class="mb-3">
             <label class="form-label">Mã Nhân Viên:</label>
-            <select class="form-select" name="tenPhongBan" id="tenPhongBan" required>
-                <option value="" selected>-- Mã nhân viên --</option>
-                <c:forEach var="item" items="${PhongBan}">
-                    <option value="${item.getTenPhongBan()}">
-                            ${item.getTenPhongBan()}
+            <select class="form-select" name="Ma" required>
+                <option value="" selected>-- Chọn nhân viên --</option>
+                <c:forEach var="item" items="${nhanViens}" varStatus="status">
+                    <option value="${item.maNV}">
+                            ${item.maNV}
                     </option>
                 </c:forEach>
             </select>
         </div>
-
         <div class="mb-3">
             <label class="form-label">Loại:</label>
             <select class="form-select" name="Loai" required>

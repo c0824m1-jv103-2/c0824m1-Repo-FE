@@ -1,8 +1,5 @@
 package com.example.module3.entity;
 
-
-import jdk.vm.ci.meta.Local;
-
 import java.time.LocalDate;
 
 public class NhanVien {
@@ -15,6 +12,10 @@ public class NhanVien {
     private String CCCD;
     private PhongBan phongBan;
 
+    public NhanVien(int maNV) {
+        this.MaNV = maNV;
+    }
+
     public NhanVien(int MaNV, String HoTen, LocalDate NgaySinh, String GioiTinh, String ChucVu, String Email, String CCCD, PhongBan phongBan) {
         this.MaNV = MaNV;
         this.HoTen = HoTen;
@@ -25,27 +26,6 @@ public class NhanVien {
         this.CCCD = CCCD;
         this.phongBan = phongBan;
     }
-
-    public NhanVien(String HoTen, LocalDate NgaySinh, String GioiTinh, String ChucVu, String Email, String CCCD, PhongBan phongBan) {
-        this.HoTen = HoTen;
-        this.NgaySinh = NgaySinh;
-        this.GioiTinh = GioiTinh;
-        this.ChucVu = ChucVu;
-        this.Email = Email;
-        this.CCCD = CCCD;
-        this.phongBan = phongBan;
-    }
-
-    public NhanVien(int MaNV, String HoTen, LocalDate NgaySinh, String GioiTinh, String ChucVu, String Email, String CCCD) {
-        this.MaNV = MaNV;
-        this.HoTen = HoTen;
-        this.NgaySinh = NgaySinh;
-        this.GioiTinh = GioiTinh;
-        this.ChucVu = ChucVu;
-        this.Email = Email;
-        this.CCCD = CCCD;
-    }
-
 
     public int getMaNV() {
         return MaNV;

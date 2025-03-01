@@ -16,22 +16,7 @@ public class NhanVienService implements INhanVienService {
     }
 
     @Override
-    public void deleteNhanVien(int MaNV) {
-        nhanVienRepository.deleteNhanVien(MaNV);
-    }
-
-    @Override
-    public void createNhanVien(NhanVien nhanVien) {
-        nhanVienRepository.createNhanVien(nhanVien);
-    }
-
-    @Override
-    public NhanVien updateNhanVien(int MaNV) {
-        return nhanVienRepository.updateNhanVien(MaNV);
-    }
-
-    @Override
-    public void update(NhanVien NhanVien) {
-        nhanVienRepository.update(NhanVien);
+    public List<NhanVien> findAllMaNV() {
+        return nhanVienRepository.findAllMaNV();
     }
 }
