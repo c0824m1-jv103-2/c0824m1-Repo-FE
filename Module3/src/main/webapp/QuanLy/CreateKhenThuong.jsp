@@ -1,3 +1,4 @@
+
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -50,7 +51,6 @@
     <form method="post">
         <div class="mb-3">
             <label class="form-label">Mã Nhân Viên:</label>
-<%--            <input type="number" step="0.01" class="form-control" name="Ma" required>--%>
             <select class="form-select" name="Ma" required>
                 <option value="" selected>-- Chọn nhân viên --</option>
                 <c:forEach var="item" items="${nhanViens}" varStatus="status">

@@ -12,5 +12,4 @@ public interface IKhenThuongRepository {
     void save(KhenThuong khenThuong);
 
     List<KhenThuong> findByLoai(String loai);
-
 }

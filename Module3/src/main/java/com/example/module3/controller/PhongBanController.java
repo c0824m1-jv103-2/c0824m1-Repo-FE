@@ -57,7 +57,7 @@ public class PhongBanController extends HttpServlet {
     private void loaiKhenThuong(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<KhenThuong> khenThuongs;
         String loai = req.getParameter("id");
-        if (loai == null || loai.isEmpty()){
+        if (loai == null || loai.isEmpty()) {
             khenThuongs = khenThuongService.getKhenThuongList();
         } else {
             khenThuongs = khenThuongService.findByLoai(loai);
