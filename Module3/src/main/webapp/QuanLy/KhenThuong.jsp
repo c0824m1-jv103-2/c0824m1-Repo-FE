@@ -15,13 +15,13 @@
 
     <div class="button-group-custom">
         <button onclick="window.history.back();">⬅️</button>
-        <div class="combo-wrapper-custom">
-            <select id="filterSelect">
+        <div class="combo-wrapper-custom" >
+            <select id="filterSelect" class="form-select me-2">
                 <option value="">Tất cả</option>
                 <option value="Khen thưởng">Khen thưởng</option>
                 <option value="Phạt">Phạt</option>
             </select>
-            <button id="applyFilter" onclick="filterTable()">Chọn</button>
+            <button class="btn btn-primary" onclick="applyFilter()">Chọn</button>
         </div>
         <button onclick="window.location.href='/phongban?action=createKhenThuong'">➕</button>
     </div>
@@ -39,7 +39,7 @@
         </thead>
         <tbody>
         <c:forEach var="item" items="${khenThuongs}">
-            <tr class="${item.loai eq 'Khen thưởng' ? 'custom-success' : (item.loai eq 'Phạt' ? 'custom-danger' : '')}">
+            <tr>
                 <td>${item.ma}</td>
                 <td>${item.loai}</td>
                 <td>${item.soTien}</td>
@@ -77,5 +77,12 @@
         </tbody>
     </table>
 </div>
+
+<script>
+    function applyFilter() {
+        let selectedValue = document.getElementById("filterSelect").value;
+        window.location.href = "/phongban?action=loaiKhenThuong&id=" + encodeURIComponent(selectedValue);
+    }
+</script>
 </body>
 </html>
