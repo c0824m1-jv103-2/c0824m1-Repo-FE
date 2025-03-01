@@ -34,6 +34,9 @@ public class PhongBanController extends HttpServlet {
             action = "";
         }
         switch (action) {
+            case "loaiKhenThuong":
+                loaiKhenThuong(req, resp);
+                break;
             case "khenThuong":
                 khenThuongList(req, resp);
                 break;
@@ -49,6 +52,18 @@ public class PhongBanController extends HttpServlet {
                 phongBan(req, resp);
                 break;
         }
+    }
+
+    private void loaiKhenThuong(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<KhenThuong> khenThuongs;
+        String loai = req.getParameter("id");
+        if (loai == null || loai.isEmpty()){
+            khenThuongs = khenThuongService.getKhenThuongList();
+        } else {
+            khenThuongs = khenThuongService.findByLoai(loai);
+        }
+        req.setAttribute("khenThuongs", khenThuongs);
+        req.getRequestDispatcher("/QuanLy/KhenThuong.jsp").forward(req, resp);
     }
 
     private void deleteKhenThuong(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

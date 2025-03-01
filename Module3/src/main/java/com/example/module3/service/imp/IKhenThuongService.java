@@ -10,4 +10,6 @@ public interface IKhenThuongService {
     void remove(int Ma);
 
     void save(KhenThuong khenThuong);
+    List<KhenThuong> findByLoai(String loai);
+
 }
