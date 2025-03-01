@@ -20,7 +20,7 @@ public class KhenThuongRepository implements IKhenThuongRepository {
         try (Statement statement = BaseRepository.getConnection().createStatement();
              ResultSet resultSet = statement.executeQuery("select * from khenthuongphat")) {
             while (resultSet.next()) {
-                int MaNV = resultSet.getInt("Ma");
+                int MaNV = resultSet.getInt("MaNV");
                 String Loai = resultSet.getString("Loai");
                 float SoTien = resultSet.getFloat("SoTien");
                 String LyDo = resultSet.getString("LyDo");
@@ -45,7 +45,7 @@ public class KhenThuongRepository implements IKhenThuongRepository {
 
     @Override
     public void save(KhenThuong khenThuong) {
-        try (PreparedStatement statement = BaseRepository.getConnection().prepareStatement("insert into khenthuongphat(Ma, Loai, SoTien,LyDo,Ngay) values (?,?,?,?,?)")) {
+        try (PreparedStatement statement = BaseRepository.getConnection().prepareStatement("insert into khenthuongphat(MaNV, Loai, SoTien,LyDo,Ngay) values (?,?,?,?,?)")) {
             statement.setInt(1, khenThuong.getMa());
             statement.setString(2, khenThuong.getLoai());
             statement.setFloat(3, khenThuong.getSoTien());
@@ -65,7 +65,7 @@ public class KhenThuongRepository implements IKhenThuongRepository {
             statement.setString(1, loai);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                int MaNV = resultSet.getInt("Ma");
+                int MaNV = resultSet.getInt("MaNV");
                 String Loai = resultSet.getString("Loai");
                 float SoTien = resultSet.getFloat("SoTien");
                 String LyDo = resultSet.getString("LyDo");

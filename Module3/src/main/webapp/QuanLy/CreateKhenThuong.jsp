@@ -50,12 +50,11 @@
     <form method="post">
         <div class="mb-3">
             <label class="form-label">Mã Nhân Viên:</label>
-<%--            <input type="number" step="0.01" class="form-control" name="Ma" required>--%>
             <select class="form-select" name="Ma" required>
                 <option value="" selected>-- Chọn nhân viên --</option>
                 <c:forEach var="item" items="${nhanViens}" varStatus="status">
                     <option value="${item.maNV}">
-                            ${item.maNV}
+                            ${item.maNV}.${item.hoTen}
                     </option>
                 </c:forEach>
             </select>
