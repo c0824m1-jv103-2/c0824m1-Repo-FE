@@ -3,7 +3,6 @@ package com.example.module3.repository;
 import com.example.module3.entity.NhanVien;
 import com.example.module3.entity.PhongBan;
 import com.example.module3.repository.imp.INhanVienRepository;
-import com.mysql.cj.x.protobuf.MysqlxCrud;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -12,16 +11,12 @@ import java.util.List;
 
 public class NhanVienRepository implements INhanVienRepository {
     private final String SELECT_NhanVien = "select n.*, pb.TenPhongBan from nhanvien n join phongban pb " + "on n.MaPhongBan = pb.MaPhongBan where pb.TenPhongBan like ?";
-    private final String DELETE_NhanVien = "DELETE FROM nhanvien WHERE MaNV = ?";
-    private final String INSERT_NhanVien = "INSERT INTO NhanVien (HoTen, NgaySinh, GioiTinh, ChucVu, Email, CCCD, MaPhongBan) VALUES \n" +
-            "(?, ?, ?, ?, ?, ?, ?)";
-    private final String UPDATE_NhanVien = "UPDATE NhanVien SET HoTen = ?, NgaySinh = ?, GioiTinh= ?, ChucVu=?, Email=?, CCCD=?, MaPhongBan=? where MaNV = ?";
-    private final String SELECT_NHANVIEN = "SELECT * FROM nhanvien WHERE MaNV = ?";
 
     @Override
     public List<NhanVien> findAllNhanVien(String TenPhongBan) {
         List<NhanVien> nhanViens = new ArrayList<NhanVien>();
-        try (Connection connection = BaseRepository.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(SELECT_NhanVien);) {
+        try (Connection connection = BaseRepository.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(SELECT_NhanVien);)
+        {
             preparedStatement.setString(1, "%" + TenPhongBan + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -130,10 +125,13 @@ public class NhanVienRepository implements INhanVienRepository {
                 int MaPhongBan = resultSet.getInt("MaPhongBan");
                 NhanVien nhanVien = new NhanVien(MaNhanVien, HoTen, NgaySinh, GioiTinh, ChucVu, Email, CCCD);
                 return nhanVien;
+            while (resultSet.next()) {
+                int MaNV = resultSet.getInt("MaNV");
+                nhanViens.add(new NhanVien(MaNV));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        return nhanViens;
     }
 }

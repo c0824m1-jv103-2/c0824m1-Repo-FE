@@ -40,7 +40,7 @@
         </thead>
         <tbody>
         <c:forEach var="item" items="${khenThuongs}">
-            <tr class="${item.loai eq 'Khen thưởng' ? 'custom-success' : (item.loai eq 'Phạt' ? 'custom-danger' : '')}">
+            <tr>
                 <td>${item.ma}</td>
                 <td>${item.loai}</td>
                 <td>${item.soTien}</td>

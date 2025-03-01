@@ -6,7 +6,4 @@ import java.util.List;
 
 public interface IPhongBanService {
     List<PhongBan> getPhongBanList();
-
-    PhongBan getPhongBan(String TenPhongBan);
-
 }
