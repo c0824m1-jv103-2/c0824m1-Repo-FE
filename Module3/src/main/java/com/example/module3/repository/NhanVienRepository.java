@@ -46,8 +46,7 @@ public class NhanVienRepository implements INhanVienRepository {
             ResultSet resultSet = statement.executeQuery("select * from nhanvien");) {
             while (resultSet.next()) {
                 int MaNV = resultSet.getInt("MaNV");
-                String HoTen = resultSet.getString("HoTen");
-                nhanViens.add(new NhanVien(MaNV,HoTen));
+                nhanViens.add(new NhanVien(MaNV));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

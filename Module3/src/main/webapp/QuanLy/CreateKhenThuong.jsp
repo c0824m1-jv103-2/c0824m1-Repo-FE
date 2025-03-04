@@ -50,11 +50,12 @@
     <form method="post">
         <div class="mb-3">
             <label class="form-label">Mã Nhân Viên:</label>
+<%--            <input type="number" step="0.01" class="form-control" name="Ma" required>--%>
             <select class="form-select" name="Ma" required>
                 <option value="" selected>-- Chọn nhân viên --</option>
                 <c:forEach var="item" items="${nhanViens}" varStatus="status">
                     <option value="${item.maNV}">
-                            ${item.maNV}.${item.hoTen}
+                            ${item.maNV}
                     </option>
                 </c:forEach>
             </select>
@@ -88,5 +89,14 @@
         </div>
     </form>
 </div>
+<script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+        let soTien = document.querySelector('input[name="SoTien"]').value;
+        if (parseFloat(soTien) <= 0) {
+            alert("Số tiền phải lớn hơn 0!");
+            event.preventDefault();
+        }
+    });
+</script>
 </body>
 </html>

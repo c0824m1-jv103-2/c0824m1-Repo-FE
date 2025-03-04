@@ -1,5 +1,6 @@
 package com.example.module3.controller;
 
+import com.example.module3.commonUtils.CommonUtils;
 import com.example.module3.entity.KhenThuong;
 import com.example.module3.entity.NhanVien;
 import com.example.module3.entity.PhongBan;
@@ -75,6 +76,10 @@ public class PhongBanController extends HttpServlet {
 
     private void khenThuongList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<KhenThuong> khenThuongs = khenThuongService.getKhenThuongList();
+        for (KhenThuong khenThuong : khenThuongs) {
+            khenThuong.setSoTienFormatted(CommonUtils.formatVND(khenThuong.getSoTien()));
+            khenThuong.setNgayFormatted(CommonUtils.formatDate(khenThuong.getNgay()));
+        }
         req.setAttribute("khenThuongs", khenThuongs);
         req.getRequestDispatcher("/QuanLy/KhenThuong.jsp").forward(req, resp);
     }
@@ -128,6 +133,9 @@ public class PhongBanController extends HttpServlet {
         List<PhongBan> PhongBan = phongBanService.getPhongBanList();
         req.setAttribute("PhongBan", PhongBan);
         List<NhanVien> NhanViens = nhanVienService.getNhanVien("");
+        for (NhanVien nhanVien : NhanViens) {
+            nhanVien.setNgayFormatted(CommonUtils.formatDate(nhanVien.getNgaySinh()));
+        }
         req.setAttribute("NhanViens", NhanViens);
         RequestDispatcher dispatcher = req.getRequestDispatcher("QuanLy/PhongBan.jsp");
         try {
@@ -137,5 +145,6 @@ public class PhongBanController extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 }

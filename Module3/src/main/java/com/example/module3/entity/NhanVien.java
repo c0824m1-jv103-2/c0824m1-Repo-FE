@@ -12,9 +12,10 @@ public class NhanVien {
     private String CCCD;
     private PhongBan phongBan;
 
-    public NhanVien(int maNV, String HoTen) {
+    private String ngayFormatted;
+
+    public NhanVien(int maNV) {
         this.MaNV = maNV;
-        this.HoTen = HoTen;
     }
 
     public NhanVien(int MaNV, String HoTen, LocalDate NgaySinh, String GioiTinh, String ChucVu, String Email, String CCCD, PhongBan phongBan) {
@@ -90,5 +91,13 @@ public class NhanVien {
 
     public void setPhongBan(PhongBan phongban) {
         phongBan = phongban;
+    }
+
+    public String getNgayFormatted() {
+        return ngayFormatted;
+    }
+
+    public void setNgayFormatted(String ngayFormatted) {
+        this.ngayFormatted = ngayFormatted;
     }
 }

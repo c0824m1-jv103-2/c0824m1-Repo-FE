@@ -42,9 +42,9 @@
             <tr>
                 <td>${item.ma}</td>
                 <td>${item.loai}</td>
-                <td>${item.soTien}</td>
+                <td>${item.soTienFormatted}</td>
                 <td>${item.lyDo}</td>
-                <td>${item.ngay}</td>
+                <td>${item.ngayFormatted}</td>
                 <td>
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="##delete${item.ma}">
                         Xóa
@@ -84,5 +84,6 @@
         window.location.href = "/phongban?action=loaiKhenThuong&id=" + encodeURIComponent(selectedValue);
     }
 </script>
+
 </body>
 </html>

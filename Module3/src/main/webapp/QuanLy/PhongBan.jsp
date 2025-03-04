@@ -42,7 +42,7 @@
                 <tr>
                     <td><c:out value="${loop.count}"/></td>
                     <td><c:out value="${nhanvien.getHoTen()}"/></td>
-                    <td><c:out value="${nhanvien.getNgaySinh()}"/></td>
+                    <td><c:out value="${nhanvien.getNgayFormatted()}"/></td>
                     <td><c:out value="${nhanvien.getGioiTinh()}"/></td>
                     <td><c:out value="${nhanvien.getChucVu()}"/></td>
                     <td><c:out value="${nhanvien.getEmail()}"/></td>
