@@ -13,6 +13,16 @@
 <div class="container-custom">
     <h2 class="mb-3 text-center">Danh Sách Khen Thưởng & Phạt</h2>
 
+    <c:if test="${not empty sessionScope.message}">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                ${sessionScope.message}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="removeMessage()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <c:remove var="message" scope="session"/>
+    </c:if>
+
     <div class="button-group-custom">
         <button onclick="window.location.href='/phongban';">⬅️</button>
         <div class="combo-wrapper-custom" >
@@ -77,11 +87,21 @@
         </tbody>
     </table>
 </div>
+
 <script>
     function applyFilter() {
         let selectedValue = document.getElementById("filterSelect").value;
         window.location.href = "/phongban?action=loaiKhenThuong&id=" + encodeURIComponent(selectedValue);
     }
+</script>
+<script>
+    function removeMessage() {
+        fetch('/removeMessage', { method: 'POST' });
+    }
+
+    setTimeout(() => {
+        document.querySelector('.alert')?.remove();
+    }, 3000);
 </script>
 
 </body>

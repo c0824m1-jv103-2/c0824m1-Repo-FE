@@ -13,4 +13,3 @@ public interface IKhenThuongService {
     List<KhenThuong> findByLoai(String loai);
 
 }
-
