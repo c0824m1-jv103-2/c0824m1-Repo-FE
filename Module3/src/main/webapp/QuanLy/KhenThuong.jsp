@@ -77,7 +77,6 @@
         </tbody>
     </table>
 </div>
-
 <script>
     function applyFilter() {
         let selectedValue = document.getElementById("filterSelect").value;
