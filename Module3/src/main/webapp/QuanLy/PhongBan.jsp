@@ -20,10 +20,9 @@
         </select>
         <button type="submit">Chọn</button>
     </form>
-    <button class="btn-add"><a href="/phongban?action=createNhanVien">Thêm Mới Nhân Viên</a></button>
-    <form action="/phongban?action=createNhanVien" method="post">
-    </form>
-    <button onclick="window.location.href='/phongban?action=khenThuong'">Khen thưởng & Phạt</button>
+    <button>Thêm Mới Nhân Viên</button>
+    <button onclick="window.location.href='/phongban?action=khenThuong';">Khen thưởng & Phạt</button>
+    <button>Dự án</button>
 </div>
 <div class="content">
     <h2>Danh sách Nhân Viên</h2>

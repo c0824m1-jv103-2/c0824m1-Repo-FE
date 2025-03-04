@@ -58,7 +58,7 @@ public class PhongBanController extends HttpServlet {
     private void loaiKhenThuong(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<KhenThuong> khenThuongs;
         String loai = req.getParameter("id");
-        if (loai == null || loai.isEmpty()) {
+        if (loai == null || loai.isEmpty()){
             khenThuongs = khenThuongService.getKhenThuongList();
         } else {
             khenThuongs = khenThuongService.findByLoai(loai);
@@ -109,6 +109,7 @@ public class PhongBanController extends HttpServlet {
         LocalDate Ngay = LocalDate.parse(req.getParameter("Ngay"));
         KhenThuong khenThuong = new KhenThuong(Ma, Loai, SoTien, LyDo, Ngay);
         khenThuongService.save(khenThuong);
+        req.getSession().setAttribute("message", "Thêm mới thành công");
         resp.sendRedirect("/phongban?action=khenThuong");
     }
 

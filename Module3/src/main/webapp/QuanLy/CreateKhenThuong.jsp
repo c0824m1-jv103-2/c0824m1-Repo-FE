@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -81,6 +80,7 @@
         <div class="mb-3">
             <label class="form-label">Ngày:</label>
             <input type="date" class="form-control" name="Ngay" required>
+            <div class="invalid-feedback">Vui lòng chọn ngày không lớn hơn hôm nay.</div>
         </div>
 
         <div class="d-flex justify-content-between">
@@ -98,5 +98,19 @@
         }
     });
 </script>
+<script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+        let ngayInput = document.querySelector('input[name="Ngay"]').value;
+        let ngayNhap = new Date(ngayInput);
+        let homNay = new Date();
+        homNay.setHours(0, 0, 0, 0);
+
+        if (!ngayInput || ngayNhap > homNay) {
+            alert("Ngày không được lớn hơn hôm nay!");
+            event.preventDefault();
+        }
+    });
+</script>
+
 </body>
 </html>

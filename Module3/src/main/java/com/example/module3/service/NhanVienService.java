@@ -19,9 +19,4 @@ public class NhanVienService implements INhanVienService {
     public List<NhanVien> findAllMaNV() {
         return nhanVienRepository.findAllMaNV();
     }
-
-    @Override
-    public List<NhanVien> findAllMaNV() {
-        return nhanVienRepository.findAllMaNV();
-    }
 }
