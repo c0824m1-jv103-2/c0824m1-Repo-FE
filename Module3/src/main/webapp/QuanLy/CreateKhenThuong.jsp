@@ -89,5 +89,14 @@
         </div>
     </form>
 </div>
+<script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+        let soTien = document.querySelector('input[name="SoTien"]').value;
+        if (parseFloat(soTien) <= 0) {
+            alert("Số tiền phải lớn hơn 0!");
+            event.preventDefault();
+        }
+    });
+</script>
 </body>
 </html>

@@ -12,6 +12,8 @@ public class NhanVien {
     private String CCCD;
     private PhongBan phongBan;
 
+    private String ngayFormatted;
+
     public NhanVien(int maNV) {
         this.MaNV = maNV;
     }
@@ -89,5 +91,13 @@ public class NhanVien {
 
     public void setPhongBan(PhongBan phongban) {
         phongBan = phongban;
+    }
+
+    public String getNgayFormatted() {
+        return ngayFormatted;
+    }
+
+    public void setNgayFormatted(String ngayFormatted) {
+        this.ngayFormatted = ngayFormatted;
     }
 }

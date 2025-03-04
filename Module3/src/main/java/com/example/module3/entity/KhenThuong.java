@@ -8,6 +8,8 @@ public class KhenThuong {
     private float SoTien;
     private String LyDo;
     private LocalDate Ngay;
+    private String soTienFormatted;
+    private String ngayFormatted;
 
     public KhenThuong() {
     }
@@ -58,5 +60,21 @@ public class KhenThuong {
 
     public void setNgay(LocalDate ngay) {
         Ngay = ngay;
+    }
+
+    public String getSoTienFormatted() {
+        return soTienFormatted;
+    }
+
+    public void setSoTienFormatted(String soTienFormatted) {
+        this.soTienFormatted = soTienFormatted;
+    }
+
+    public String getNgayFormatted() {
+        return ngayFormatted;
+    }
+
+    public void setNgayFormatted(String ngayFormatted) {
+        this.ngayFormatted = ngayFormatted;
     }
 }

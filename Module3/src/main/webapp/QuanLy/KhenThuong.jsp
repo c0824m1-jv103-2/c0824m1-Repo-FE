@@ -14,8 +14,7 @@
     <h2 class="mb-3 text-center">Danh Sách Khen Thưởng & Phạt</h2>
 
     <div class="button-group-custom">
-        <button onclick="window.location.href='/phongban' +
-         '';">⬅️</button>
+        <button onclick="window.location.href='/phongban';">⬅️</button>
         <div class="combo-wrapper-custom" >
             <select id="filterSelect" class="form-select me-2">
                 <option value="">Tất cả</option>
@@ -43,9 +42,9 @@
             <tr>
                 <td>${item.ma}</td>
                 <td>${item.loai}</td>
-                <td>${item.soTien}</td>
+                <td>${item.soTienFormatted}</td>
                 <td>${item.lyDo}</td>
-                <td>${item.ngay}</td>
+                <td>${item.ngayFormatted}</td>
                 <td>
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="##delete${item.ma}">
                         Xóa
@@ -84,5 +83,6 @@
         window.location.href = "/phongban?action=loaiKhenThuong&id=" + encodeURIComponent(selectedValue);
     }
 </script>
+
 </body>
 </html>
